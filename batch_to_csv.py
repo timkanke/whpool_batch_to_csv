@@ -1,3 +1,5 @@
+import re
+
 from csv import DictWriter
 from pathlib import Path
 
@@ -28,6 +30,10 @@ with open(output_path / 'whpool_sagemaker.csv', 'w') as csv_file:
         message_body = open(file).read()
         message_body = message_body.strip()
         message_body = message_body.replace(',', '')
+
+        # Remove tags
+        pattern = re.compile('<.*?>')
+        message_body = re.sub(pattern, '', message_body)
 
         # Write CSV row
         csv_writer.writerow(
