@@ -38,7 +38,8 @@ with open(output_path / 'whpool_sagemaker.csv', 'w') as csv_file:
         # Write CSV row
         csv_writer.writerow(
             {
-                'Identifier': file_name,
+                
                 'Message Body': message_body,
+                'Identifier': file_name,
             }
         )
